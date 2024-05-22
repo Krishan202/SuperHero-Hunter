@@ -39,7 +39,7 @@
 /* #search-list{
   margin-top: 50px;
 } */
-#list{
+#list-data{
   list-style: none;
   background-color: lightgray;
   margin-bottom: 32px;
@@ -51,7 +51,7 @@
   z-index: 1;
   display: none;
 }
-#list li{
+#list-data li{
   margin: 10px;
   border-bottom: 2px solid black;
   cursor: pointer;

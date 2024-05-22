@@ -3,6 +3,7 @@ const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const myFavorite = [];
 const favSpan = document.getElementById("favorite-list");
+const listData = document.getElementById("list-data");
 let url = `
     https://gateway.marvel.com:443/v1/public/characters?ts=1715725383803&apikey=f409b6f99fb4bff92ff1537cf1ff0c8f&hash=22bc84df8146ffdacdb20f01655d1780
     `;
@@ -82,6 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 searchBtn.addEventListener("click", async () => {
+  listData.style.display = 'none';
   const inpVal = searchInput.value.trim().toLowerCase();
   // console.log(inpVal);
   url = `https://gateway.marvel.com:443/v1/public/characters?ts=1715725383803&apikey=f409b6f99fb4bff92ff1537cf1ff0c8f&hash=22bc84df8146ffdacdb20f01655d1780&name=${inpVal}`;
@@ -169,105 +171,101 @@ function superHeroPage() {
       const res = await fetchData.json();
       // console.log(res.data.results[0]);
       const result = res.data.results[0];
-      
+
       const detailsPage = document.createElement("div");
       detailsPage.classList.add("superhero-details");
       const detailsName = document.createElement("h2");
       detailsName.classList.add("details-name");
       detailsName.textContent = result.name;
       detailsPage.appendChild(detailsName);
-      const detailsImage = document.createElement('img');
-      detailsImage.src = result.thumbnail.path+'.jpg';
+      const detailsImage = document.createElement("img");
+      detailsImage.src = result.thumbnail.path + ".jpg";
       detailsPage.appendChild(detailsImage);
-      const detailsComics = document.createElement('ul');
-      const comicsHeading = document.createElement('h3');
+      const detailsComics = document.createElement("ul");
+      const comicsHeading = document.createElement("h3");
       comicsHeading.textContent = `Comics`;
-      detailsComics.appendChild(comicsHeading)
-      detailsComics.classList.add('detailsComics');
+      detailsComics.appendChild(comicsHeading);
+      detailsComics.classList.add("detailsComics");
       const comicsData = result.comics.items;
       // comicsData.forEach((item)=>console.log(item.name))
       // console.log(comicsData);
-      comicsData.forEach((item)=>{
-        const li = document.createElement('li');
-        li.classList.add('list-name');
+      comicsData.forEach((item) => {
+        const li = document.createElement("li");
+        li.classList.add("list-name");
         li.textContent = item.name;
         detailsComics.appendChild(li);
-      })
+      });
       detailsPage.appendChild(detailsComics);
-// events
-      const detailsEvents = document.createElement('ul');
-      const eventsHeading = document.createElement('h3');
+      // events
+      const detailsEvents = document.createElement("ul");
+      const eventsHeading = document.createElement("h3");
       eventsHeading.textContent = `Events`;
-      detailsEvents.appendChild(eventsHeading)
-      detailsEvents.classList.add('detailsEvents');
+      detailsEvents.appendChild(eventsHeading);
+      detailsEvents.classList.add("detailsEvents");
       const eventsData = result.events.items;
       // comicsData.forEach((item)=>console.log(item.name))
       // console.log(comicsData);
-      if(eventsData.length === 0 ){
-        const para = document.createElement('p');
-        para.textContent = `no events for ${result.name}`
+      if (eventsData.length === 0) {
+        const para = document.createElement("p");
+        para.textContent = `no events for ${result.name}`;
         detailsEvents.appendChild(para);
-      }
-      else{
-        eventsData.forEach((item)=>{
-          const li = document.createElement('li');
-          li.classList.add('list-name');
+      } else {
+        eventsData.forEach((item) => {
+          const li = document.createElement("li");
+          li.classList.add("list-name");
           li.textContent = item.name;
           detailsEvents.appendChild(li);
-        })
+        });
       }
-      
+
       detailsPage.appendChild(detailsEvents);
 
       // series
 
-      const detailsSeries = document.createElement('ul');
-      const seriesHeading = document.createElement('h3');
+      const detailsSeries = document.createElement("ul");
+      const seriesHeading = document.createElement("h3");
       seriesHeading.textContent = `Series`;
-      detailsSeries.appendChild(seriesHeading)
-      detailsSeries.classList.add('detailsSeries');
+      detailsSeries.appendChild(seriesHeading);
+      detailsSeries.classList.add("detailsSeries");
       const seriesData = result.series.items;
       // comicsData.forEach((item)=>console.log(item.name))
       // console.log(comicsData);
-      if(seriesData.length === 0 ){
-        const para = document.createElement('p');
-        para.textContent = `no series for ${result.name}`
+      if (seriesData.length === 0) {
+        const para = document.createElement("p");
+        para.textContent = `no series for ${result.name}`;
         detailsSeries.appendChild(para);
-      }
-      else{
-        seriesData.forEach((item)=>{
-          const li = document.createElement('li');
-          li.classList.add('list-name');
+      } else {
+        seriesData.forEach((item) => {
+          const li = document.createElement("li");
+          li.classList.add("list-name");
           li.textContent = item.name;
           detailsSeries.appendChild(li);
-        })
+        });
       }
-      
-      detailsPage.appendChild(detailsSeries);
 
+      detailsPage.appendChild(detailsSeries);
 
       // stories
 
-      const detailsStories = document.createElement('ul');
-      const storiesHeading = document.createElement('h3');
+      const detailsStories = document.createElement("ul");
+      const storiesHeading = document.createElement("h3");
       storiesHeading.textContent = `Stories`;
-      detailsStories.appendChild(storiesHeading)
-      detailsSeries.classList.add('detailsStories');
+      detailsStories.appendChild(storiesHeading);
+      detailsSeries.classList.add("detailsStories");
       const storiesData = result.stories.items;
-      if(storiesData.length === 0 ){
-        const para = document.createElement('p');
-        para.textContent = `no series for ${result.name}`
+      if (storiesData.length === 0) {
+        const para = document.createElement("p");
+        para.textContent = `no series for ${result.name}`;
         detailsStories.appendChild(para);
-      }
-      else{
-        storiesData.forEach((item)=>{
-          const li = document.createElement('li');
-          li.classList.add('list-name');
+      } else {
+        storiesData.forEach((item) => {
+          const li = document.createElement("li");
+          li.classList.add("list-name");
           li.textContent = item.name;
           detailsStories.appendChild(li);
-        })
+        });
       }
-      
+
       detailsPage.appendChild(detailsStories);
 
       resultContainer.innerHTML = detailsPage.innerHTML;
@@ -333,13 +331,16 @@ searchInput.addEventListener("keyup", async (e) => {
   );
   const requireDataLen = requireData.length;
   // requireData.forEach((item)=>console.log(item));
-  const list = document.getElementById("list");
+  
   for (let i = 0; i < requireDataLen; i++) {
     const li = document.createElement("li");
     li.classList.add("list");
     li.textContent = requireData[i];
-    list.appendChild(li);
-    list.style.display = "block";
+    listData.appendChild(li);
+    listData.style.display = "block";
+    // setInterval(()=>{
+    //   listData.style.display = "none";
+    // },3000)
   }
 
   const allList = document.querySelectorAll(".list");
@@ -417,7 +418,7 @@ searchInput.addEventListener("keyup", async (e) => {
           });
         });
       }
-      list.style.display = "none";
+      listData.style.display = "none";
       superHeroPage();
     });
   }
