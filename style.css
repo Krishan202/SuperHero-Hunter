@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+/* header section */
+#header{
+  height: 100px;
+  width: 100%;
+  box-shadow: 2px 2px 2px lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header a{
+  text-decoration: none;
+  color: inherit;
+}
+#header a h1{
+  margin: 20px;
+  cursor: pointer;
+}
+#search{
+  margin: 20px;
+  display: flex;
+  position: relative;
+}
+#search-input{
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border:none;
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px lightgray;
+  margin: 25px 25px 5px 25px;
+}
+/* #search-list{
+  margin-top: 50px;
+} */
+#list{
+  list-style: none;
+  background-color: lightgray;
+  margin-bottom: 32px;
+  margin-left: 32px;
+  padding: 5px;
+  border-radius: 20px;
+  position: absolute;
+  width: 70%;
+  z-index: 1;
+  display: none;
+}
+#list li{
+  margin: 10px;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}
+#search-btn{
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border:none;
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px lightgray;
+  cursor: pointer;
+  max-height: 45px;
+  margin-top: 25px;
+}
+#nav span{
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px;
+}
+#nav span i{
+  color: red;
+}
+/* main section */
+#main{
+  margin: 30px;
+  padding: 20px;
+  width: 100%;
+}
+#result-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.superhero-div{
+  height: 600px;
+  width: 250px;
+  border: 2px solid darkgray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px lightgray;
+  cursor: pointer;
+  position: relative;
+}
+.superhero-div:hover{
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+.superhero-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid darkgray;
+  object-fit: cover;
+  text-align: center;
+  margin: 25px 50px;
+}
+.name{
+  text-align: center;
+  margin: 10px;
+}
+.description{
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 5px;
+}
+.favorite{
+  position: absolute;
+  bottom: 50px;
+  padding: 10px;
+}
+.para{
+  margin: 10px;
+  font-size: 1.2rem;
+}
+.icon{
+  margin-left: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.know-more{
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  margin: 10px;
+  color: blue;
+}
+.know-more:hover{
+  font-size: larger;
+  transition: all 0.3s ease-in-out;
+}
+.remove-button{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+}
